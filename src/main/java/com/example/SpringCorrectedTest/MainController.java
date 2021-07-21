@@ -1,4 +1,4 @@
-package com.example.SpringCorrected;
+package com.example.SpringCorrectedTest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,22 +10,27 @@ import org.springframework.web.bind.annotation.*;
 public class MainController {
     @Autowired
 
+
+
     private Repository repository;
 
-    @PostMapping(path="/add")
-    public @ResponseBody String addNewCustomer(@RequestParam String lastName, @RequestParam String firstName,
+
+    @PostMapping(path = "/add")
+    public @ResponseBody String addNewCustomer(@RequestParam String last_name, @RequestParam String first_name,
                           @RequestParam Integer balance) {
         Customer customer = new Customer();
-        customer.setLastName(lastName);
-        customer.setFirstName(firstName);
+
+        customer.setLast_name(last_name);
+        customer.setFirst_name(first_name);
         customer.setBalance(balance);
+
         repository.save(customer);
         return "Saved Down";
     }
 
     @GetMapping(path = "/show")
     public @ResponseBody Iterable<Customer> getAllCustomers(){
-        //logger.info("getAllCustomers method entered");
+
         return repository.findAll();
     }
 

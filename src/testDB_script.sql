@@ -1,8 +1,8 @@
-
+drop table customer;
 
 create table customer (
 	id int auto_increment primary key,
-	lastName text(50),
+	lastName varchar(50),
 	firstName varchar(50),
 	balance int
 );
